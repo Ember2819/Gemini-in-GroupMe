@@ -15,10 +15,8 @@ def groupme_webhook():
     if text.startswith('^') and data.get('sender_type') != 'bot':
         user_message = text[1:].strip()
 
-        response = client.models.generate_content(
-            model="gemini-2.0-flash", 
-            contents=user_message
-        )
+        response = client.models.generate_content(model="gemini-2.5-flash-lite", contents=user_message)
+
         bot_response = response.text
 
         post_data = {
